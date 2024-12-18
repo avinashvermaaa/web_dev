@@ -1,5 +1,4 @@
-# web_dev
-web dev projects from scratch to advanced
+# All projects & live-link ( Full Stack )
 
 # Indieflix
 Website :- https://avinashvermaaa.github.io/Indieflix/
