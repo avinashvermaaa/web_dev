@@ -6,17 +6,17 @@ Website :- https://avinashvermaaa.github.io/CodeSphere/
 An Online AI based Coding Website.
 ```
 
-# Indieflix
-Website :- https://avinashvermaaa.github.io/Indieflix/
-```
-Indieflix is a OTT platform for binge watching all the latest Movies Anime and Web series.
-```
-
 # File Transfer
 Website :- https://avinashvermaaa.github.io/File_Transfer/
 * `Transfer files` from `one device to another` using `private links`
 ```
 An online platform where you can share your files from one device to another device using private links.
+```
+
+# Indieflix
+Website :- https://avinashvermaaa.github.io/Indieflix/
+```
+Indieflix is a OTT platform for binge watching all the latest Movies Anime and Web series.
 ```
 
 # Sorting_Visualizer
