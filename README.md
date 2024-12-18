@@ -1,5 +1,11 @@
 # All projects & live-link ( Full Stack )
 
+# CodeSphere
+Website :- https://avinashvermaaa.github.io/CodeSphere/
+```
+An Online AI based Coding Website.
+```
+
 # Indieflix
 Website :- https://avinashvermaaa.github.io/Indieflix/
 ```
@@ -11,6 +17,7 @@ Website :- https://avinashvermaaa.github.io/Sorting_Visualizer/
 ```
 It helps to Visualize the sorting algorithms
 ```
+
 # CV_Website
 Website :- https://avinashvermaaa.github.io/cv_website/
 ```
