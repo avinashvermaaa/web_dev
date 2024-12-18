@@ -1,0 +1,106 @@
+/* General styling for the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+/* header p{
+    font-size: 16px;
+} */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 80vh;
+    padding: 20px;
+}
+
+/* Button row styles */
+.button-row {
+    display: flex;
+    justify-content: flex-end;
+    /* Align buttons to the right */
+    width: 100%;
+    /* Take up full width */
+    margin-bottom: 20px;
+    /* Add space between the button row and the transfer box */
+}
+
+.action-btn {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    /* Space between buttons */
+}
+
+.action-btn:hover {
+    background-color: #003f7f;
+}
+
+/* Transfer box styling */
+.transfer-box {
+    background-color: white;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+    text-align: center;
+}
+
+.transfer-box h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Styling for the upload button */
+.upload-btn {
+    background-color: #0056b3;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.upload-btn:hover {
+    background-color: #003f7f;
+}
+
+/* Footer styling */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Hide the file input element */
+#file-input {
+    display: none;
+}

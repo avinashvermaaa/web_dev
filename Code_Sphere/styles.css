@@ -1,0 +1,259 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+    display: flex;
+    gap: 8px;
+}
+
+a {
+    text-decoration: none;
+    /* Remove underline from the link */
+}
+
+/* ------------- Sign-in Sign-up ------------- */
+.sign-in,.sign-up {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sign-in {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.sign-up {
+    background-color: #fff;
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+button.sign-in {
+    background-color: #4285F4;
+    /* Blue color similar to Google Sign In */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button.sign-up {
+    background-color: #fff;
+    /* Blue color similar to Google Sign In */
+    color: #357ae8;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button.sign-in:hover {
+    background-color: #357ae8;
+    /* Darker shade for hover effect */
+}
+button.sign-up:hover {
+    background-color: red;
+    /* Darker shade for hover effect */
+}
+
+
+/* Content Area (Main section) */
+main {
+    text-align: center;
+    padding: 20px;
+}
+
+.highlight-apna-compiler {
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Search box styling */
+.search-box {
+    width: 678px ; /* Matching container width */
+    margin: 10px auto;
+}
+.search-box input[type="text"] {
+    width: 99%;
+    padding: 15px; /* Increased padding for larger appearance */
+    border: 2px solid #e1e7ec;
+    border-radius: 6px;
+    font-size: 18px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Container and grid styles */
+.container-section-search {
+    width: 789px; /* Keep the container width consistent with search box */
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 6px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tab {
+    cursor: pointer;
+    padding: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.tab.active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+/* Category other programming, web, databases */
+.category {
+    display: none;
+}
+
+/* Category Popular */
+.category.active {
+    display: block;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns */
+    gap: 15px;
+}
+
+/* language box */
+.item {
+    padding: 15px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    font-size: 17px;
+    text-align: center;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.item:hover {
+    background-color: #dbd7d3;
+}
+
+/*------- bottom container -------*/
+
+.bottom-container {
+    background-color: #007bff;
+    padding: 15px 222px ;
+}
+
+.footer-link-social {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin: 40px ;
+    text-decoration: none;
+}
+
+a:hover {
+
+    color: gray;
+}
+
+.footer-link-privacy{
+    color: white;
+    font-size: 0.7rem;
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 40px;
+    margin-bottom: 0;
+}
+.copyright {
+    color: #EAF6F6;
+    /* font-size: 0.7rem; */
+    text-decoration: none;
+}
+
+
+
+/*------------   Dark mode styles   ------------*/
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode header {
+    background-color: #333;
+}
+
+button.dark-mode-toggle {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+body.dark-mode main {
+    background-color: #1e1e1e;
+    /* Dark background for content area */
+    color: #ffffff;
+}
+
+
+body.dark-mode .search-box input[type="text"] {
+    background-color: #333;
+    color: white;
+    border-color: #444;
+}
+
+body.dark-mode .container-section-search {
+    background-color: #333;
+    /* Dark background for content containers */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .tabs .tab {
+    /* Lighter color for tabs in dark mode */
+    color: #bbb;
+}
+
+body.dark-mode .tab.active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+body.dark-mode .grid .item {
+    background-color: #444;
+    color: #fff;
+}
+
+body.dark-mode .grid .item:hover {
+    background-color: #555;
+}
+
+body.dark-mode .bottom-container {
+    /* bottom container dark mode black */
+    background-color: #555;
+}
+
+
+/* ---------dark mode end--------- */
