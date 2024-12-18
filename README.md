@@ -11,3 +11,9 @@ Website :- https://avinashvermaaa.github.io/cv_website/
 ```
 This a portfolio website of mine. 
 ```
+
+# Sorting_Visualizer
+Website :- https://avinashvermaaa.github.io/Sorting_Visualizer/
+```
+It helps to Visualize the sorting algorithms
+```
