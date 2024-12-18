@@ -16,7 +16,8 @@ Website :- https://avinashvermaaa.github.io/Indieflix/
 
 # Sorting_Visualizer
 Website :- https://avinashvermaaa.github.io/Sorting_Visualizer/
-* It helps to Visualize the sorting algorithms
+* It helps to Visualize the sorting algorithms like ( BUBBLE SORT, INSERTION SORT, SELECTION SORT, QUICK SORT, HEAP SORT, SHELL SORT )
+
 
 # CV_Website
 Website :- https://avinashvermaaa.github.io/cv_website/
