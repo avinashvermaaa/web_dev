@@ -1,4 +1,4 @@
 # readme files
 ```
-all temp javscript files of course
+all temp javascript files of course
 ```
