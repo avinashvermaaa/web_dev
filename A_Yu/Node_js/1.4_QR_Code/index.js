@@ -6,17 +6,23 @@ inquirer
   .prompt([
     /* Pass your questions in here */
     {
-    message : "Type your URL",
-    name : "URL",
-  },
+      message : "Type your URL : ",
+      name : "url",
+    },
+
+    {
+      type : "input",
+      name : "filename",
+      message : "Type your file name : ",
+    }
   ])
 
   .then((answers) => {
     console.log(answers);
     // Use user feedback for... whatever!!
-    const url = answers.URL;
+    const url = answers.url;
     var qr_svg = qr.image(url);
-    qr_svg.pipe(fs.createWriteStream("qr_img.png"));
+    qr_svg.pipe(fs.createWriteStream("qr-"+ answers.filename + ".png"));
   })
 
   .catch((error) => {
