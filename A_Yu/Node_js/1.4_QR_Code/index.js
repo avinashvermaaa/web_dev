@@ -22,7 +22,7 @@ inquirer
     // Use user feedback for... whatever!!
     const url = answers.url;
     const qr_svg = qr.image(url);
-    qr_svg.pipe(fs.createWriteStream("qr-"+ answers.filename + ".png"));
+    qr_svg.pipe(fs.createWriteStream("qr_"+ answers.filename + ".png"));
   })
 
   .catch((error) => {
