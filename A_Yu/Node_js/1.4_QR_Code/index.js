@@ -21,7 +21,7 @@ inquirer
     console.log(answers);
     // Use user feedback for... whatever!!
     const url = answers.url;
-    var qr_svg = qr.image(url);
+    const qr_svg = qr.image(url);
     qr_svg.pipe(fs.createWriteStream("qr-"+ answers.filename + ".png"));
   })
 
