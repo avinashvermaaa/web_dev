@@ -3,4 +3,4 @@ const sayHi = (name) =>{
 }
 
 sayHi('avinash')
-sayHi('sonu')
+sayHi("sonu")
