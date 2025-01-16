@@ -1,6 +1,4 @@
-const sayHi = (name) =>{
-    console.log(`hello there ${name}`)
-}
+const {readFileSync, writeFileSync} = require('fs');
+const fs = require('fs')
 
-sayHi('avinash')
-sayHi("sonu")
+fs.readFileSync()

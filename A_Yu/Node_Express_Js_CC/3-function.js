@@ -14,6 +14,6 @@ console.log(data.bob)
 
 require('./7-mind-grenade.js')
 
-// sayHi(names.john);
-// sayHi(names.peter)
-// sayHi('avi')
+sayHi(names.john);
+sayHi(names.peter)
+sayHi('avi')
