@@ -1,0 +1,44 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
+
+  </head>
+  <body>
+
+    <h1>hello</h1>
+
+    <input type="checkbox">
+    <button class = "btn">Click Me</button>
+    <ul>
+        <li class = "ul-list-1">
+            <a href="https://www.google.com">Google</a>
+        </li>
+        <li class="ul-list-1">Second</li>
+        <li class="ul-list-1">Third</li>
+    </ul>
+
+<h2>DOM Manipulation Techniques</h2>
+<ul>
+    <li class = "ul-list-2">querySelector -> (everything)select by .class, #id, (h1 or body)element</li>
+    <li class = "ul-list-2">getElementsByClassName  "classname" .class -> select by class</li>
+    <li class = "ul-list-2">getElementById  "id" #id -> select by id  (every id must be unique on a single webpage)</li>
+    <li class = "ul-list-2">getElementsByTagName  "li or ul" </li>
+    <li class = "ul-list-2"> (anything after the TagName is attribute) like "class" is a attribute. </li>
+</ul>
+
+<h2>codes of DOM</h2>
+
+<ol>
+    <li>document.querySelector("input").click()</li>
+    <li>document.querySelector("input").click()</li>
+    <li>document.getElementsByTagName("button")[0].style.backgroundColor = "yellow"</li>
+    <li>document.querySelector("a").setAttribute("href", "www.youtube.com") 
+        <br>document.querySelector("li a").setAttribute("href", "https://www.youtube.com");
+        <br>document.querySelector("li").querySelector("a").setAttribute("href", "https://www.youtube.com");
+    </li>
+</ol>
+  </body>
+
+</html>

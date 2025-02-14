@@ -1,0 +1,55 @@
+.container {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+
+.players-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 222px;
+    /* Space between Player 1 and Player 2 */
+    margin-top: 20px;
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+body {
+    background-color: #393E46;
+}
+
+h1 {
+    margin: 10px;
+    font-family: 'Lobster', cursive;
+    text-shadow: 5px 0 #232931;
+    font-size: 3rem;
+    color: #4ECCA3;
+    display: inline;
+    white-space: nowrap;
+}
+
+p {
+    font-size: 2rem;
+    color: #4ECCA3;
+    font-family: 'Indie Flower', cursive;
+}
+
+footer {
+    margin-top: 5%;
+    color: #EEEEEE;
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+}
+
+img {
+    width: 100%;
+    max-width: 150px;
+    /* Ensure dice images are a reasonable size */
+    display: block;
+}
