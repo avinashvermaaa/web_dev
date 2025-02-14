@@ -1,0 +1,75 @@
+<!-- cd to backend -> run node server.js -> compile 
+ cd F:\desktop me\progress\new web\compiler\expi\pages\cpp\backend>  
+ cd expi\pages\cpp\backend 
+  cd .. (back)
+ -->
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online C++ Compiler</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <script defer src="javascript.js"></script> <!-- Link to external JS file -->
+</head>
+<body>
+    <div class="top-bar">
+        <button id="renameButton">Rename Code</button>
+        <button class="download-btn" id="downloadButton">Download Code</button>
+        <button id="darkModeButton">🌙</button> <!-- Dark Mode button with moon icon -->
+    </div>
+
+    <div class="container">
+        <h1><span class="blue-text">Code Sphere :- </span> <span class="black-text">C++ Compiler</span></h1>
+
+        <!-- Main Content: Editor and Output -->
+        <div class="editor-container">
+            <!-- Left side for Code Writing -->
+            <div class="editor">
+                <textarea id="cppCode" placeholder="Write your C++ code here...">
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    cout<<"Code Sphere is here to help you!";
+    return 0;
+}
+</textarea>
+                <button id="runButton">Run Code</button> 
+            </div>
+
+            <!-- Right side for Stdin and Output -->
+            <div class="right-container">
+                <div class="stdin">
+                    <h3>Input:</h3>
+                    <textarea id="stdinInput" placeholder="Enter input for your code here..."></textarea>
+                </div>
+                <div class="output">
+                    <h3>Output:</h3>
+                    <pre id="output"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- bottom container footer -->
+        <hr><br><br>
+        <div class="bottom-container">
+            <div class="footer-link-social-container">
+                <a class="footer-link-social" href="https://www.linkedin.com/"> <i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a class="footer-link-social" href="https://twitter.com/"> <i class="fab fa-twitter"></i> Twitter</a>
+                <a class="footer-link-social" href="https://www.instagram.com/"> <i class="fab fa-instagram"></i> Instagram </a>
+                <a class="footer-link-social" href="https://github.com"> <i class="fab fa-github"></i> Github </a>
+                <a class="footer-link-social" href="mailto:example@example.com"> <i class="fas fa-envelope"></i> Mail </a>
+            </div>
+
+            <p class="footer-link-privacy">© Copyright 2024  Apna Compiler | 
+                <a class="copyright" href="/privacy_policy.html">privacy policy | </a>
+                <a class = "copyright" href=".../privacy_policy.html">Terms & Conditions</a> | built with 💙 in India for the world.</p>
+        </div>
+    </div>
+</body>
+</html>

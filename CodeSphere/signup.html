@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CDN -->
+
+    <style>
+        /* Resetting margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative; /* So the home icon stays on top */
+        }
+
+        .signup-container {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .signup-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-field {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .input-field:focus {
+            border-color: #4285F4;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #357ae8;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-footer a {
+            color: #4285F4;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* Home Icon - Top Center */
+        .home-icon {
+            font-size: 48px; /* Increase size for visibility */
+            color: #007bff;
+            cursor: pointer;
+            position: absolute;
+            top: 20px; /* Position it near the top */
+            left: 50%;
+            transform: translateX(-50%); /* Center horizontally */
+        }
+
+        .home-icon:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Home Icon linking to the main page -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i> <!-- Home icon from Font Awesome -->
+    </a>
+
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form id="signup-form" onsubmit="return validateForm()">
+            <input type="text" id="username" class="input-field" placeholder="Username" required>
+            <input type="email" id="email" class="input-field" placeholder="Email" required>
+            <input type="password" id="password" class="input-field" placeholder="Password" required>
+            <input type="password" id="confirm-password" class="input-field" placeholder="Confirm Password" required>
+            
+            <button type="submit" class="btn">Sign Up</button>
+            
+            <div id="error-message" class="error"></div>
+        </form>
+
+        <div class="form-footer">
+            <p>Already have an account? <a href="signin.html">Sign In</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Form Validation
+        function validateForm() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const errorMessage = document.getElementById('error-message');
+            
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                errorMessage.textContent = "Passwords do not match!";
+                return false;
+            }
+
+            // Reset error message if validation is successful
+            errorMessage.textContent = '';
+            return true;
+        }
+
+        <script>
+  document.getElementById('signup-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const response = await fetch('http://localhost:5000/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, email, password })
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      alert('User registered successfully!');
+      window.location.href = 'signin.html';  // Redirect to signin page
+    } else {
+      alert(data.message);
+    }
+  });
+
+
+    </script>
+
+</body>
+
+</html>

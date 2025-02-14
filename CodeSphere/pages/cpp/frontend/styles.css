@@ -1,0 +1,330 @@
+/* Basic styles for the layout and dark mode */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    /* Light mode background color */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Align content at the top */
+    height: 100vh;
+    position: relative;
+    transition: background-color 0.3s ease;
+    /* Smooth transition for background */
+}
+
+body.dark-mode {
+    background-color: #000000;
+    /* Black background for dark mode */
+}
+
+.container {
+    background: #fff;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    /* No space at the top */
+    padding-top: 10px;
+    /* Reduced space to bring content closer to top */
+    transition: background 0.3s ease;
+    /* Smooth transition for background */
+}
+
+.container.dark-mode {
+    background: #2c2c2c;
+    /* Dark gray background for the container */
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0;
+    /* No top margin */
+}
+
+.blue-text {
+    color: #007bff;
+    /* Blue for "Code Sphere" */
+}
+
+.black-text {
+    color: #000;
+    /* Black for "C++ Compiler" */
+}
+
+.dark-mode h1 {
+    color: white;
+    /* White text for the heading in dark mode */
+}
+
+/* Top bar containing Rename, Download and Dark Mode buttons */
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    /* Align buttons to the right */
+    position: absolute;
+    top: 10px;
+    /* Position buttons at the very top */
+    right: 20px;
+    z-index: 10;
+    padding: 0;
+    /* Remove padding */
+}
+
+.top-bar button {
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    background-color: transparent;
+    /* Remove background */
+    border: 1px solid #ccc;
+    /* Border visible */
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.top-bar button:hover {
+    background-color: #f1f1f1;
+    /* Button hover effect */
+}
+
+/* Rename and Download buttons with blue background */
+.top-bar button#renameButton {
+    background-color: #007bff;
+    /* Blue background for Rename button */
+    color: #fff;
+    /* White text */
+}
+
+.top-bar button.download-btn {
+    background-color: #007bff;
+    /* Blue background for Download button */
+    color: #fff;
+    /* White text */
+}
+
+.top-bar button:hover {
+    background-color: #0056b3;
+    /* Darker blue when hovered */
+}
+
+/* Editor Container and Text Areas */
+.editor-container {
+    display: flex;
+    width: 100%;
+    margin-top: 60px;
+    /* Adjusted space to avoid overlap with top bar */
+}
+
+.editor {
+    flex: 3;
+    /* 75% of the width for code editor */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    resize: none;
+    flex-grow: 1;
+    min-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 0 5px rgba(173, 216, 230, 0.6);
+    /* Subtle glow effect */
+}
+
+.dark-mode textarea {
+    background-color: #2c2c2c;
+    color: white;
+    border: 1px solid #666;
+    box-shadow: 0 0 5px rgba(173, 216, 230, 0.6);
+    /* Subtle glow effect in dark mode */
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.download-btn {
+    background-color: #28a745;
+    /* Green color for download */
+    margin-top: 10px;
+}
+
+.download-btn:hover {
+    background-color: #218838;
+}
+
+/* Right side: Stdin and Output */
+.right-container {
+    flex: 1;
+    /* 25% of the width for stdin and output */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100vh;
+    padding: 10px;
+}
+
+.stdin {
+    flex: 0 1 20%;
+    /* 20% height */
+    display: flex;
+    flex-direction: column;
+}
+
+.stdin h3 {
+    font-size: 18px;
+    /* Smaller font size for Input/Output headings */
+    color: #333;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.dark-mode .stdin h3,
+.dark-mode .output h3 {
+    color: white;
+    /* White text for headings in dark mode */
+}
+
+.stdin textarea {
+    height: 120px;
+    font-size: 14px;
+    /* Reduced input size */
+}
+
+.output {
+    flex: 1;
+    /* Remaining space (80% of right side) for output */
+    padding-top: 20px;
+    overflow-y: auto;
+}
+
+/* Use <h3> for Input and Output headings */
+.output h3 {
+    font-size: 18px;
+    /* Smaller font size for Output heading */
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+pre {
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    color: #333;
+    height: 100%;
+    overflow-y: auto;
+    font-size: 14px;
+    box-shadow: 0 0 5px rgba(173, 216, 230, 0.6);
+    /* Subtle glow effect */
+}
+
+.dark-mode pre {
+    background-color: #1c1c1c;
+    color: white;
+    box-shadow: 0 0 5px rgba(173, 216, 230, 0.6);
+    /* Subtle glow effect in dark mode */
+}
+
+@media (max-width: 768px) {
+    .editor-container {
+        flex-direction: column;
+    }
+
+    .editor,
+    .right-container {
+        width: 100%;
+    }
+
+    .stdin,
+    .output {
+        flex: none;
+    }
+}
+
+/*------- bottom container -------*/
+.bottom-container {
+    background-color: #007bff;
+    display: flex;
+    flex-direction: column;
+    /* Stack items vertically */
+    align-items: center;
+    /* Center content horizontally */
+    padding: 20px 0;
+    /* Padding for vertical space */
+}
+
+.footer-link-social {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin: 10px 20px;
+    text-decoration: none;
+}
+
+.footer-link-social i {
+    margin-right: 8px;
+    /* Space between icon and text */
+}
+
+.footer-link-social:hover {
+    color: gray;
+}
+
+.footer-link-privacy {
+    color: white;
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    /* Add some space from social links */
+    text-align: center;
+    /* Center-align the privacy text */
+}
+
+.copyright {
+    color: #EAF6F6;
+    font-size: 0.7rem;
+    text-decoration: none;
+    margin-top: 5px;
+    /* Add a little margin to space the copyright from privacy text */
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+    .footer-link-social {
+        display: inline-block;
+        margin: 5px 10px;
+    }
+
+    .footer-link-privacy {
+        margin-top: 10px;
+        font-size: 0.7rem;
+    }
+}

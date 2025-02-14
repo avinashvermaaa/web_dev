@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Sphere</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- c++ python icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <!-- Logo can be placed here -->
+        </div>
+        <div class="user-info">
+            <!-- Sign In Button that links to the Sign In page -->
+            <a href="signin.html">
+                <button class="sign-in">Sign In</button>
+            </a>
+
+            <!-- Sign Up Button that links to the Sign Up page -->
+            <a href="signup.html">
+                <button class="sign-up">Sign Up</button>
+            </a>
+            
+            <!-- Dark mode toggle button -->
+            <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+        </div>
+    </header>
+
+    <main>
+        <h1>Code online with <span class="highlight-apna-compiler">Code Sphere.</span></h1>
+        <p>Code Sphere is here to help you write code online.</p>
+        
+        <!-- Search box outside the container -->
+        <div class="search-box">
+            <input type="text" placeholder="Search by Language/DB/Template etc.">
+        </div>
+
+        <!-- Container for tabs and items -->
+        <div class="container-section-search">
+            <div class="tabs">
+                <span class="tab active" onclick="showCategory('popular')">POPULAR</span>
+                <span class="tab" onclick="showCategory('programming')">PROGRAMMING</span>
+                <span class="tab" onclick="showCategory('web')">WEB</span>
+                <span class="tab" onclick="showCategory('databases')">DATABASES</span>
+            </div>
+
+            <div id="popular" class="category active">
+                <div class="grid">
+                    <div class="item">HTML <i class="fab fa-html5" style="color: #E34F26;"></i></div>
+                    <a href="pages\python\frontend\compiler.html" class="item-link"> <div class="item">Python <i class="fab fa-python" style="color: #306998;"></i></div></a>
+                    <a href="pages\cpp\frontend\compiler.html" class="item-link"> <div class="item"> C++ <i class="fas fa-code" style="color: red;"></i></div></a>
+                    <div class="item">Java <i class="fab fa-java" style="color: #007396;"></i></div>
+                    <div class="item">MySQL <i class="fas fa-database" style="color: #00758F;"></i></div>
+                    <div class="item">JavaScript <i class="fab fa-js" style="color: #F7DF1E;"></i></div>
+                    <div class="item">PHP <i class="fab fa-php" style="color: #8993BE;"></i></div>
+                    <div class="item">Assembly <i class="fas fa-cogs" style="color: #A8B9CC;"></i></div>
+                    <div class="item">C <i class="fas fa-cogs" style="color: #A8B9CC;"></i></div>
+                    <div class="item">C# <i class="fab fa-csharp" style="color: #68217A;"></i></div>
+                    <div class="item">Lua <i class="fab fa-python" style="color: #306998;"></i></div>
+                    <div class="item">PL/SQL <i class="fas fa-database" style="color: #F00D00;"></i></div>
+                    <div class="item">NodeJS <i class="fab fa-node" style="color: #8CC84B;"></i></div>
+                    <div class="item">MongoDB <i class="fas fa-database" style="color: #47A248;"></i></div>
+                    <div class="item">Groovy <i class="fab fa-java" style="color: #E8A400;"></i></div>
+                    <div class="item">Ruby <i class="fas fa-gem" style="color: #CC0000;"></i></div>
+                    
+
+                </div>
+            </div>
+
+            <div id="programming" class="category">
+                <div class="grid">
+                    <div class="item">Java <i class="fab fa-java" style="color: #007396;"></i></div>
+                    <a href="pages\python\frontend\compiler.html" class="item-link"> <div class="item">Python <i class="fab fa-python" style="color: #306998;"></i></div></a>
+                    <div class="item">C <i class="fas fa-cogs" style="color: #A8B9CC;"></i></div>
+                    <a href="pages\cpp\frontend\compiler.html" class="item-link"> <div class="item"> C++ <i class="fas fa-code" style="color: red;"></i></div></a>
+                    <div class="item">Go <i class="fab fa-golang" style="color: #00ADD8;"></i></div>
+                    <div class="item">NodeJS <i class="fab fa-node" style="color: #8CC84B;"></i></div>
+                    <div class="item">JavaScript <i class="fab fa-js" style="color: #F7DF1E;"></i></div>
+                    <div class="item">Scala <i class="fas fa-code" style="color: #DC322F;"></i></div>
+                    <div class="item">PHP <i class="fab fa-php" style="color: #8993BE;"></i></div>
+                    <div class="item">Ruby <i class="fas fa-gem" style="color: #CC0000;"></i></div>
+                    <div class="item">R <i class="fas fa-chart-line" style="color: #276DC3;"></i></div>
+                    <div class="item">Perl <i class="fas fa-terminal" style="color: #8C8C8C;"></i></div>
+                    <div class="item">C# <i class="fab fa-csharp" style="color: #306998;"></i></div>
+                    <div class="item">Kotlin <i class="fab fa-java" style="color: #7F52FF;"></i></div>
+                    <div class="item">Pascal <i class="fas fa-cogs" style="color: #3D6C4E;"></i></div>
+                    <div class="item">Cobol <i class="fas fa-cogs" style="color: #FF0033;"></i></div>
+                    <div class="item">Lua <i class="fab fa-python" style="color: #0000FF;"></i></div>
+                    <div class="item">Fortran <i class="fas fa-cogs" style="color: #1F4E79;"></i></div>
+                    <div class="item">Assembly <i class="fas fa-cogs" style="color: #C4A000;"></i></div>
+                    <div class="item">Python2 <i class="fab fa-python" style="color: #306998;"></i></div>
+                    <div class="item">Groovy <i class="fab fa-java" style="color: #E8A400;"></i></div>
+                    <div class="item">Bash <i class="fas fa-terminal" style="color: #4EAA25;"></i></div>
+                    <div class="item">Clojure <i class="fas fa-cogs" style="color: #4E9F3D;"></i></div>
+                    <div class="item">TypeScript <i class="fab fa-js-square" style="color: #3178C6;"></i></div>
+                    <div class="item">Prolog <i class="fas fa-cogs" style="color: #E4A010;"></i></div>
+                    <div class="item">Rust <i class="fab fa-rust" style="color: #000000;"></i></div>
+                    <div class="item">Swift <i class="fab fa-apple" style="color: #F05138;"></i></div>
+                    <div class="item">Objective-C <i class="fab fa-apple" style="color: #2A2A2A;"></i></div>
+                    <div class="item">CoffeeScript <i class="fas fa-coffee" style="color: #6F4F37;"></i></div>
+                    <div class="item">EJS <i class="fas fa-code" style="color: #60B5CC;"></i></div>
+
+
+                </div>
+            </div>
+
+            <div id="web" class="category">
+                <div class="grid">
+                    <div class="item">HTML <i class="fab fa-html5" style="color: #E34F26;"></i></div>
+                    <div class="item">Materialize <i class="fas fa-leaf" style="color: #4CAF50;"></i></div>
+                    <div class="item">Bootstrap <i class="fab fa-bootstrap" style="color: #563D7C;"></i></div>
+                    <div class="item">JQuery <i class="fab fa-js-square" style="color: #0769AD;"></i></div>
+                    <div class="item">JavaScript <i class="fab fa-js" style="color: #F7DF1E;"></i></div>
+                    <div class="item">CSS <i class="fas fa-cogs" style="color: red;"></i></div>
+                    <div class="item">Foundation <i class="fas fa-cogs" style="color: pink;"></i></div>
+                    <div class="item">Bulma <i class="fas fa-cogs" style="color: #00D1B2;"></i></div>
+                    <div class="item">Uikit <i class="fas fa-cogs" style="color: #8C8C8C;"></i></div>
+                    <div class="item">Semantic UI <i class="fas fa-cogs" style="color: #42b883;"></i></div>
+                    <div class="item">Skeleton <i class="fas fa-cogs" style="color: #8C8C8C;"></i></div>
+                    <div class="item">Milligram <i class="fas fa-cogs" style="color: pink;"></i></div>
+                    <div class="item">React (Beta) <i class="fab fa-react" style="color: #61DAFB;"></i></div>
+                    <div class="item">Angular (Beta) <i class="fab fa-angular" style="color: #DD1B16;"></i></div>
+                    <div class="item">Vue (Beta) <i class="fab fa-vuejs" style="color: #42b883;"></i></div>
+                    <div class="item">Vue3 (Beta) <i class="fab fa-vuejs" style="color: #42b883;"></i></div>
+                    <div class="item">BackboneJS <i class="fab fa-js-square" style="color: #0061F2;"></i></div>
+
+
+                </div>
+            </div>
+            
+            <div id="databases" class="category">
+                <div class="grid">
+                    <div class="item">MySQL <i class="fas fa-database mysql-icon" style="color: #4479A1;"></i></div>
+                    <div class="item">Oracle <i class="fas fa-database" style="color: #F80000;"></i></div>
+                    <div class="item">PostgreSQL <i class="fas fa-database" style="color: #336791;"></i></div>
+                    <div class="item">MongoDB <i class="fas fa-database" style="color: #4DB33D;"></i></div>
+                    <div class="item">SQLite <i class="fas fa-database" style="color: #003B57;"></i></div>
+                    <div class="item">Redis <i class="fas fa-database" style="color: #D12D27;"></i></div>
+                    <div class="item">MariaDB <i class="fas fa-database" style="color: #003B57;"></i></div>
+                    <div class="item">PL/SQL <i class="fas fa-database" style="color: #F80000;"></i></div>
+                    <div class="item">SQL Server <i class="fas fa-database" style="color: pink;"></i></div>
+
+
+                </div>
+            </div>
+
+            <!-- Add more categories (databases) as needed -->
+        </div>
+    </main>
+
+    <!-- bottom container footer -->
+
+    
+    <div class="bottom-container">
+    <a class="footer-link-social" href="https://www.linkedin.com/"> <i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a class="footer-link-social" href="https://twitter.com/"> <i class="fab fa-twitter"></i> Twitter</a>
+    <a class="footer-link-social" href="https://www.instagram.com/"> <i class="fab fa-instagram"></i> Instagram </a>
+    <a class="footer-link-social" href="https://github.com"> <i class="fab fa-github"></i> Github </a>
+    <a class="footer-link-social" href="mailto:example@example.com"> <i class="fas fa-envelope"></i> Mail </a>
+
+    
+
+    <p class="footer-link-privacy">© Copyright 2024  Code Sphere | 
+        <a class = "copyright" href="privacy_policy.html">privacy policy | </a>
+        <a class = "copyright" href="privacy_policy.html">Terms & Conditions</a> | built with 💙 in India for the world.</p>
+    </div>
+
+
+    <script src="javascript.js"></script>
+</body>
+</html>
