@@ -1,5 +1,5 @@
 import react, { useState } from 'react'
-
+import Welcome from './Welcome.js'
 // inbuilt {useState that's why can't change name of function}
 function Counter(){
   const [Current_Count,Increment_Count] = useState(0);
@@ -14,7 +14,8 @@ function Counter(){
 function app() {
   return(
     <div>
-      <h1> Hello, Avinash!</h1>
+  
+      <Welcome name = "Avinash" />
       <Counter />
     </div>
   );
