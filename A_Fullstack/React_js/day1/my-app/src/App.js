@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
+import react, { useState } from 'react'
 
-function Counter() {
-  const [count, setCount] = useState(0);
-
+// inbuilt {useState that's why can't change name of function}
+function Counter(){
+  const [Current_Count,Increment_Count] = useState(0);
   return (
     <div>
-      <p> count : {count} </p>
-      <button onClick={()=> setCount(count + 1)}> Increment </button>
+      <p>Count : {Current_Count}</p>
+      <button onClick={() => Increment_Count(Current_Count + 1)}>Increment</button>
     </div>
-
   );
 }
 
-function App(){
-  return (
+function app() {
+  return(
     <div>
-      
-      <h1>Hello, Avinash</h1>
+      <h1> Hello, Avinash!</h1>
       <Counter />
-      
     </div>
   );
+
 }
 
-export default App;
+
+export default app;
