@@ -1,14 +1,26 @@
-import './App.css';
+import React, { useState } from 'react';
 
-import React from 'react';
-import Welcome from './Welcome.js';
+function Counter() {
+  const [count, setCount] = useState(0);
 
-function App() {
   return (
     <div>
-      <h1>Hello Reactjs!</h1>
-      <Welcome name= "Avinash" />
+      <p> count : {count} </p>
+      <button onClick={()=> setCount(count + 1)}> Increment </button>
+    </div>
+
+  );
+}
+
+function App(){
+  return (
+    <div>
+      
+      <h1>Hello, Avinash</h1>
+      <Counter />
+      
     </div>
   );
 }
+
 export default App;
