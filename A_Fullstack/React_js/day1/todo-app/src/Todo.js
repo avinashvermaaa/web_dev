@@ -4,27 +4,38 @@ function Todo() {
   const [task, setTask] = useState("");
   const [priority, setPriority] = useState("Low");
   const [dueDate, setDueDate] = useState("");
+  const [category, setCategory] = useState("General");
+  const [note, setNote] = useState("");
   const [tasks, setTasks] = useState([]);
-  const [filter, setFilter] = useState("All"); // Filter for task status
-  const [sortBy, setSortBy] = useState("None"); // Sorting criteria
+  const [filter, setFilter] = useState("All");
+  const [sortBy, setSortBy] = useState("None");
+  const [darkMode, setDarkMode] = useState(false); // Dark mode state
 
   // Load tasks from local storage on initial render
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     setTasks(savedTasks);
+    const savedDarkMode = JSON.parse(localStorage.getItem("darkMode")) || false;
+    setDarkMode(savedDarkMode);
   }, []);
 
-  // Save tasks to local storage whenever they change
+  // Save tasks and dark mode state to local storage
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }, [tasks, darkMode]);
 
   const handleAddTask = () => {
     if (task.trim()) {
-      setTasks([...tasks, { text: task, priority, dueDate, completed: false }]);
+      setTasks([
+        ...tasks,
+        { text: task, priority, dueDate, category, note, completed: false },
+      ]);
       setTask("");
       setPriority("Low");
       setDueDate("");
+      setCategory("General");
+      setNote("");
     }
   };
 
@@ -67,28 +78,54 @@ function Todo() {
   });
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h2>Todo List with Priority, Due Date, and Sorting</h2>
+    <div
+      style={{
+        padding: "20px",
+        fontFamily: "Arial",
+        backgroundColor: darkMode ? "#333" : "#fff",
+        color: darkMode ? "#fff" : "#000",
+        minHeight: "100vh",
+      }}
+    >
+      <h2>Todo List with Categories, Notes, and Dark Mode</h2>
 
-      <input
-        type="text"
-        value={task}
-        placeholder="Enter a new task"
-        onChange={(e) => setTask(e.target.value)}
-      />
-      <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-        <option value="Low">Low</option>
-        <option value="Medium">Medium</option>
-        <option value="High">High</option>
-      </select>
-      <input
-        type="date"
-        value={dueDate}
-        onChange={(e) => setDueDate(e.target.value)}
-      />
-      <button onClick={handleAddTask}>Add Task</button>
+      <button onClick={() => setDarkMode(!darkMode)}>
+        Toggle {darkMode ? "Light" : "Dark"} Mode
+      </button>
 
-      {/* Filter options */}
+      <div style={{ margin: "10px 0" }}>
+        <input
+          type="text"
+          value={task}
+          placeholder="Enter a new task"
+          onChange={(e) => setTask(e.target.value)}
+        />
+        <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+        <input
+          type="date"
+          value={dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
+        />
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option value="General">General</option>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Urgent">Urgent</option>
+        </select>
+        <button onClick={handleAddTask}>Add Task</button>
+      </div>
+
+      <textarea
+        placeholder="Add a note for this task"
+        value={note}
+        onChange={(e) => setNote(e.target.value)}
+        style={{ width: "100%", height: "50px", marginBottom: "10px" }}
+      />
+
       <div style={{ margin: "10px 0" }}>
         <label>Filter by: </label>
         <select value={filter} onChange={(e) => setFilter(e.target.value)}>
@@ -96,11 +133,8 @@ function Todo() {
           <option value="Completed">Completed</option>
           <option value="Pending">Pending</option>
         </select>
-      </div>
 
-      {/* Sorting options */}
-      <div style={{ margin: "10px 0" }}>
-        <label>Sort by: </label>
+        <label style={{ marginLeft: "10px" }}>Sort by: </label>
         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
           <option value="None">None</option>
           <option value="Priority">Priority</option>
@@ -138,6 +172,8 @@ function Todo() {
             <span style={{ marginLeft: "10px" }}>
               Due: {t.dueDate || "None"}
             </span>
+            <span style={{ marginLeft: "10px" }}>Category: {t.category}</span>
+            <p>Note: {t.note}</p>
             <button
               onClick={() => handleDeleteTask(index)}
               style={{ marginLeft: "10px", color: "red" }}
