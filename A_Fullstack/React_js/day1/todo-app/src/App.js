@@ -1,10 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Todo from "./Todo";
 
 function App() {
   return (
     <div>
-      <h1> hello this is a todo list app</h1>
+      <h1>Welcome to Your Learning Progress Tracker</h1>
+      <Todo />
     </div>
   );
 }
