@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 
 function Todo() {
   const [task, setTask] = useState("");
+  const [priority, setPriority] = useState("Low");
   const [tasks, setTasks] = useState([]);
+  const [filter, setFilter] = useState("All"); // For task filtering
 
   // Load tasks from local storage on initial render
   useEffect(() => {
@@ -17,8 +19,12 @@ function Todo() {
 
   const handleAddTask = () => {
     if (task.trim()) {
-      setTasks([...tasks, { text: task, completed: false }]);
+      setTasks([
+        ...tasks,
+        { text: task, priority: priority, completed: false },
+      ]);
       setTask("");
+      setPriority("Low");
     }
   };
 
@@ -41,22 +47,55 @@ function Todo() {
     setTasks(updatedTasks);
   };
 
+  // Filter tasks based on the selected filter option
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === "All") return true;
+    if (filter === "Completed") return task.completed;
+    if (filter === "Pending") return !task.completed;
+    return true;
+  });
+
   return (
-    <div>
-      <h2>Todo List</h2>
+    <div style={{ padding: "20px", fontFamily: "Arial" }}>
+      <h2>Todo List with Priority & Filters</h2>
+
       <input
         type="text"
         value={task}
         placeholder="Enter a new task"
         onChange={(e) => setTask(e.target.value)}
       />
+      <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
       <button onClick={handleAddTask}>Add Task</button>
 
+      {/* Filter options */}
+      <div style={{ margin: "10px 0" }}>
+        <label>Filter by: </label>
+        <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+          <option value="All">All</option>
+          <option value="Completed">Completed</option>
+          <option value="Pending">Pending</option>
+        </select>
+      </div>
+
       <ul>
-        {tasks.map((t, index) => (
+        {filteredTasks.map((t, index) => (
           <li
             key={index}
-            style={{ textDecoration: t.completed ? "line-through" : "none" }}
+            style={{
+              textDecoration: t.completed ? "line-through" : "none",
+              padding: "5px 0",
+              color:
+                t.priority === "High"
+                  ? "red"
+                  : t.priority === "Medium"
+                  ? "orange"
+                  : "green",
+            }}
           >
             <input
               type="checkbox"
@@ -67,8 +106,15 @@ function Todo() {
               type="text"
               value={t.text}
               onChange={(e) => handleEditTask(index, e.target.value)}
+              style={{ marginRight: "10px" }}
             />
-            <button onClick={() => handleDeleteTask(index)}>Delete</button>
+            <span style={{ fontWeight: "bold" }}>Priority: {t.priority}</span>
+            <button
+              onClick={() => handleDeleteTask(index)}
+              style={{ marginLeft: "10px", color: "red" }}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
