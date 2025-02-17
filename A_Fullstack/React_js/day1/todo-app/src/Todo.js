@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 function Todo() {
   const [task, setTask] = useState("");
   const [priority, setPriority] = useState("Low");
+  const [dueDate, setDueDate] = useState("");
   const [tasks, setTasks] = useState([]);
-  const [filter, setFilter] = useState("All"); // For task filtering
+  const [filter, setFilter] = useState("All"); // Filter for task status
+  const [sortBy, setSortBy] = useState("None"); // Sorting criteria
 
   // Load tasks from local storage on initial render
   useEffect(() => {
@@ -19,12 +21,10 @@ function Todo() {
 
   const handleAddTask = () => {
     if (task.trim()) {
-      setTasks([
-        ...tasks,
-        { text: task, priority: priority, completed: false },
-      ]);
+      setTasks([...tasks, { text: task, priority, dueDate, completed: false }]);
       setTask("");
       setPriority("Low");
+      setDueDate("");
     }
   };
 
@@ -55,9 +55,20 @@ function Todo() {
     return true;
   });
 
+  // Sort tasks based on the selected sort criteria
+  const sortedTasks = filteredTasks.sort((a, b) => {
+    if (sortBy === "Priority") {
+      const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+      return priorityOrder[a.priority] - priorityOrder[b.priority];
+    } else if (sortBy === "Due Date") {
+      return new Date(a.dueDate) - new Date(b.dueDate);
+    }
+    return 0;
+  });
+
   return (
     <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h2>Todo List with Priority & Filters</h2>
+      <h2>Todo List with Priority, Due Date, and Sorting</h2>
 
       <input
         type="text"
@@ -70,6 +81,11 @@ function Todo() {
         <option value="Medium">Medium</option>
         <option value="High">High</option>
       </select>
+      <input
+        type="date"
+        value={dueDate}
+        onChange={(e) => setDueDate(e.target.value)}
+      />
       <button onClick={handleAddTask}>Add Task</button>
 
       {/* Filter options */}
@@ -82,8 +98,18 @@ function Todo() {
         </select>
       </div>
 
+      {/* Sorting options */}
+      <div style={{ margin: "10px 0" }}>
+        <label>Sort by: </label>
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option value="None">None</option>
+          <option value="Priority">Priority</option>
+          <option value="Due Date">Due Date</option>
+        </select>
+      </div>
+
       <ul>
-        {filteredTasks.map((t, index) => (
+        {sortedTasks.map((t, index) => (
           <li
             key={index}
             style={{
@@ -109,6 +135,9 @@ function Todo() {
               style={{ marginRight: "10px" }}
             />
             <span style={{ fontWeight: "bold" }}>Priority: {t.priority}</span>
+            <span style={{ marginLeft: "10px" }}>
+              Due: {t.dueDate || "None"}
+            </span>
             <button
               onClick={() => handleDeleteTask(index)}
               style={{ marginLeft: "10px", color: "red" }}
