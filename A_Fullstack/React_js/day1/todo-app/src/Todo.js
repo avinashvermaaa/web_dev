@@ -40,10 +40,17 @@ function Todo() {
   // Function to add a new task to the list
   const handleAddTask = () => {
     if (task.trim()) {
-      setTasks([
-        ...tasks,
-        { text: task, priority, dueDate, category, note, completed: false },
-      ]);
+      // Create a unique id for each task
+      const newTask = {
+        id: Date.now(), // Using timestamp as unique id
+        text: task,
+        priority,
+        dueDate,
+        category,
+        note,
+        completed: false,
+      };
+      setTasks([...tasks, newTask]);
       // Clear the input fields after adding a task
       setTask("");
       setPriority("Low");
@@ -53,24 +60,24 @@ function Todo() {
     }
   };
 
-  // Function to delete a task by index
-  const handleDeleteTask = (index) => {
-    const updatedTasks = tasks.filter((_, i) => i !== index);
+  // Function to delete a task by id
+  const handleDeleteTask = (id) => {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
     setTasks(updatedTasks);
   };
 
   // Function to toggle the completion status of a task
-  const handleToggleComplete = (index) => {
-    const updatedTasks = tasks.map((t, i) =>
-      i === index ? { ...t, completed: !t.completed } : t
+  const handleToggleComplete = (id) => {
+    const updatedTasks = tasks.map((t) =>
+      t.id === id ? { ...t, completed: !t.completed } : t
     );
     setTasks(updatedTasks);
   };
 
   // Function to edit the text of a task
-  const handleEditTask = (index, newText) => {
-    const updatedTasks = tasks.map((t, i) =>
-      i === index ? { ...t, text: newText } : t
+  const handleEditTask = (id, newText) => {
+    const updatedTasks = tasks.map((t) =>
+      t.id === id ? { ...t, text: newText } : t
     );
     setTasks(updatedTasks);
   };
@@ -268,9 +275,9 @@ function Todo() {
             {category} Tasks
           </h3>
           <ul style={{ listStyleType: "none", padding: 0 }}>
-            {tasks.map((t, index) => (
+            {tasks.map((t) => (
               <li
-                key={index}
+                key={t.id}
                 style={{
                   padding: "10px",
                   borderBottom: "1px solid #ccc",
@@ -285,13 +292,13 @@ function Todo() {
                   <input
                     type="checkbox"
                     checked={t.completed}
-                    onChange={() => handleToggleComplete(index)}
+                    onChange={() => handleToggleComplete(t.id)}
                     style={{ marginRight: "10px" }}
                   />
                   <input
                     type="text"
                     value={t.text}
-                    onChange={(e) => handleEditTask(index, e.target.value)}
+                    onChange={(e) => handleEditTask(t.id, e.target.value)}
                     style={{
                       flex: 1,
                       padding: "8px",
@@ -311,7 +318,7 @@ function Todo() {
                   Note: {t.note}
                 </p>
                 <button
-                  onClick={() => handleDeleteTask(index)}
+                  onClick={() => handleDeleteTask(t.id)}
                   style={{
                     padding: "5px 10px",
                     backgroundColor: "#dc3545",
