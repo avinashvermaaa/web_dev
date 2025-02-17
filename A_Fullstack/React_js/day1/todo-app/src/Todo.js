@@ -14,7 +14,7 @@ function Todo() {
   // State to manage filtering, sorting, and dark mode
   const [filter, setFilter] = useState("All");
   const [sortBy, setSortBy] = useState("None");
-  const [darkMode, setDarkMode] = useState(false); // Dark mode toggle
+  const [darkMode, setDarkMode] = useState(true); // Dark mode toggle
 
   // Load tasks and dark mode state from localStorage on initial render
   useEffect(() => {
