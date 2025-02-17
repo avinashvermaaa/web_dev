@@ -1,36 +1,50 @@
 import React, { useState, useEffect } from "react";
 
 function Todo() {
+  // State to manage input fields for tasks
   const [task, setTask] = useState("");
   const [priority, setPriority] = useState("Low");
   const [dueDate, setDueDate] = useState("");
   const [category, setCategory] = useState("General");
   const [note, setNote] = useState("");
+
+  // State to manage the list of tasks
   const [tasks, setTasks] = useState([]);
+
+  // State to manage filtering, sorting, and dark mode
   const [filter, setFilter] = useState("All");
   const [sortBy, setSortBy] = useState("None");
-  const [darkMode, setDarkMode] = useState(false); // Dark mode state
+  const [darkMode, setDarkMode] = useState(false); // Dark mode toggle
 
-  // Load tasks from local storage on initial render
+  // Load tasks and dark mode state from localStorage on initial render
   useEffect(() => {
+    // Retrieve saved tasks from localStorage
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     setTasks(savedTasks);
-    const savedDarkMode = JSON.parse(localStorage.getItem("darkMode")) || false;
-    setDarkMode(savedDarkMode);
+
+    // Retrieve dark mode state from localStorage (default is false if not found)
+    const savedDarkMode = JSON.parse(localStorage.getItem("darkMode"));
+    setDarkMode(savedDarkMode !== null ? savedDarkMode : false);
   }, []);
 
-  // Save tasks and dark mode state to local storage
+  // Save tasks to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
-  }, [tasks, darkMode]);
+  }, [tasks]);
 
+  // Save dark mode state to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }, [darkMode]);
+
+  // Function to add a new task to the list
   const handleAddTask = () => {
     if (task.trim()) {
       setTasks([
         ...tasks,
         { text: task, priority, dueDate, category, note, completed: false },
       ]);
+      // Clear the input fields after adding a task
       setTask("");
       setPriority("Low");
       setDueDate("");
@@ -39,11 +53,13 @@ function Todo() {
     }
   };
 
+  // Function to delete a task by index
   const handleDeleteTask = (index) => {
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
   };
 
+  // Function to toggle the completion status of a task
   const handleToggleComplete = (index) => {
     const updatedTasks = tasks.map((t, i) =>
       i === index ? { ...t, completed: !t.completed } : t
@@ -51,6 +67,7 @@ function Todo() {
     setTasks(updatedTasks);
   };
 
+  // Function to edit the text of a task
   const handleEditTask = (index, newText) => {
     const updatedTasks = tasks.map((t, i) =>
       i === index ? { ...t, text: newText } : t
@@ -60,13 +77,13 @@ function Todo() {
 
   // Filter tasks based on the selected filter option
   const filteredTasks = tasks.filter((task) => {
-    if (filter === "All") return true;
-    if (filter === "Completed") return task.completed;
-    if (filter === "Pending") return !task.completed;
+    if (filter === "All") return true; // Show all tasks
+    if (filter === "Completed") return task.completed; // Show only completed tasks
+    if (filter === "Pending") return !task.completed; // Show only pending tasks
     return true;
   });
 
-  // Sort tasks based on the selected sort criteria
+  // Sort tasks based on the selected sorting option
   const sortedTasks = filteredTasks.sort((a, b) => {
     if (sortBy === "Priority") {
       const priorityOrder = { High: 1, Medium: 2, Low: 3 };
@@ -74,7 +91,7 @@ function Todo() {
     } else if (sortBy === "Due Date") {
       return new Date(a.dueDate) - new Date(b.dueDate);
     }
-    return 0;
+    return 0; // No sorting if "None" is selected
   });
 
   return (
@@ -82,17 +99,19 @@ function Todo() {
       style={{
         padding: "20px",
         fontFamily: "Arial",
-        backgroundColor: darkMode ? "#333" : "#fff",
-        color: darkMode ? "#fff" : "#000",
+        backgroundColor: darkMode ? "#333" : "#fff", // Background color changes based on dark mode
+        color: darkMode ? "#fff" : "#000", // Text color changes based on dark mode
         minHeight: "100vh",
       }}
     >
       <h2>Todo List with Categories, Notes, and Dark Mode</h2>
 
+      {/* Button to toggle dark mode */}
       <button onClick={() => setDarkMode(!darkMode)}>
         Toggle {darkMode ? "Light" : "Dark"} Mode
       </button>
 
+      {/* Input fields for adding a new task */}
       <div style={{ margin: "10px 0" }}>
         <label>Task: </label>
         <input
@@ -129,6 +148,7 @@ function Todo() {
         </button>
       </div>
 
+      {/* Note input field for the task */}
       <textarea
         placeholder="Add a note for this task"
         value={note}
@@ -136,6 +156,7 @@ function Todo() {
         style={{ width: "100%", height: "50px", marginBottom: "10px" }}
       />
 
+      {/* Filtering and sorting options */}
       <div style={{ margin: "10px 0" }}>
         <label>Filter by: </label>
         <select value={filter} onChange={(e) => setFilter(e.target.value)}>
@@ -152,12 +173,13 @@ function Todo() {
         </select>
       </div>
 
+      {/* Task list display */}
       <ul>
         {sortedTasks.map((t, index) => (
           <li
             key={index}
             style={{
-              textDecoration: t.completed ? "line-through" : "none",
+              textDecoration: t.completed ? "line-through" : "none", // Strikethrough for completed tasks
               padding: "5px 0",
               color:
                 t.priority === "High"
