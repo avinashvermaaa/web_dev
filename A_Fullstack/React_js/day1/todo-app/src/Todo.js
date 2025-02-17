@@ -94,56 +94,121 @@ function Todo() {
     return 0; // No sorting if "None" is selected
   });
 
+  const groupedTasks = sortedTasks.reduce((acc, task) => {
+    if (!acc[task.category]) acc[task.category] = [];
+    acc[task.category].push(task);
+    return acc;
+  }, {});
+
   return (
     <div
       style={{
         padding: "20px",
         fontFamily: "Arial",
-        backgroundColor: darkMode ? "#333" : "#fff", // Background color changes based on dark mode
-        color: darkMode ? "#fff" : "#000", // Text color changes based on dark mode
+        backgroundColor: darkMode ? "#333" : "#f4f4f9", // Background color changes based on dark mode
+        color: darkMode ? "#f4f4f9" : "#333", // Text color changes based on dark mode
         minHeight: "100vh",
+        position: "relative",
+        transition: "background-color 0.3s ease, color 0.3s ease",
       }}
     >
-      <h2>Todo List with Categories, Notes, and Dark Mode</h2>
-
-      {/* Button to toggle dark mode */}
-      <button onClick={() => setDarkMode(!darkMode)}>
-        Toggle {darkMode ? "Light" : "Dark"} Mode
+      {/* Dark mode toggle button with emoji */}
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        style={{
+          position: "absolute",
+          top: "20px",
+          right: "20px",
+          backgroundColor: darkMode ? "#444" : "#ddd",
+          border: "none",
+          borderRadius: "50%",
+          fontSize: "24px",
+          padding: "10px",
+          cursor: "pointer",
+          transition: "background-color 0.3s ease",
+        }}
+        aria-label="Toggle Dark Mode"
+      >
+        {darkMode ? "🌞" : "🌙"}
       </button>
 
-      {/* Input fields for adding a new task */}
-      <div style={{ margin: "10px 0" }}>
-        <label>Task: </label>
+      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+        Todo List with Categories, Notes, and Dark Mode
+      </h2>
+
+      {/* Input fields for adding tasks */}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "10px",
+          marginBottom: "20px",
+        }}
+      >
         <input
           type="text"
           value={task}
           placeholder="Enter a new task"
           onChange={(e) => setTask(e.target.value)}
+          style={{
+            padding: "8px",
+            flex: "1 1 auto",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+          }}
         />
 
-        <label style={{ marginLeft: "10px" }}>Priority: </label>
-        <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+        <select
+          value={priority}
+          onChange={(e) => setPriority(e.target.value)}
+          style={{
+            padding: "8px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+          }}
+        >
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
           <option value="High">High</option>
         </select>
 
-        <label style={{ marginLeft: "10px" }}>Due Date: </label>
         <input
           type="date"
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
+          style={{
+            padding: "8px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+          }}
         />
 
-        <label style={{ marginLeft: "10px" }}>Category: </label>
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          style={{
+            padding: "8px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+          }}
+        >
           <option value="General">General</option>
           <option value="Work">Work</option>
           <option value="Personal">Personal</option>
           <option value="Urgent">Urgent</option>
         </select>
 
-        <button onClick={handleAddTask} style={{ marginLeft: "10px" }}>
+        <button
+          onClick={handleAddTask}
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#007bff",
+            color: "#fff",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
           Add Task
         </button>
       </div>
@@ -153,68 +218,118 @@ function Todo() {
         placeholder="Add a note for this task"
         value={note}
         onChange={(e) => setNote(e.target.value)}
-        style={{ width: "100%", height: "50px", marginBottom: "10px" }}
+        style={{
+          width: "100%",
+          padding: "8px",
+          height: "50px",
+          marginBottom: "20px",
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+        }}
       />
 
       {/* Filtering and sorting options */}
-      <div style={{ margin: "10px 0" }}>
+      <div style={{ marginBottom: "20px" }}>
         <label>Filter by: </label>
-        <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+        <select
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          style={{
+            padding: "8px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+          }}
+        >
           <option value="All">All</option>
           <option value="Completed">Completed</option>
           <option value="Pending">Pending</option>
         </select>
 
         <label style={{ marginLeft: "10px" }}>Sort by: </label>
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          style={{
+            padding: "8px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+          }}
+        >
           <option value="None">None</option>
           <option value="Priority">Priority</option>
           <option value="Due Date">Due Date</option>
         </select>
       </div>
 
-      {/* Task list display */}
-      <ul>
-        {sortedTasks.map((t, index) => (
-          <li
-            key={index}
-            style={{
-              textDecoration: t.completed ? "line-through" : "none", // Strikethrough for completed tasks
-              padding: "5px 0",
-              color:
-                t.priority === "High"
-                  ? "red"
-                  : t.priority === "Medium"
-                  ? "orange"
-                  : "green",
-            }}
-          >
-            <input
-              type="checkbox"
-              checked={t.completed}
-              onChange={() => handleToggleComplete(index)}
-            />
-            <input
-              type="text"
-              value={t.text}
-              onChange={(e) => handleEditTask(index, e.target.value)}
-              style={{ marginRight: "10px" }}
-            />
-            <span style={{ fontWeight: "bold" }}>Priority: {t.priority}</span>
-            <span style={{ marginLeft: "10px" }}>
-              Due: {t.dueDate || "None"}
-            </span>
-            <span style={{ marginLeft: "10px" }}>Category: {t.category}</span>
-            <p>Note: {t.note}</p>
-            <button
-              onClick={() => handleDeleteTask(index)}
-              style={{ marginLeft: "10px", color: "red" }}
-            >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      {/* Grouped task list by category */}
+      {Object.entries(groupedTasks).map(([category, tasks]) => (
+        <div key={category} style={{ marginBottom: "20px" }}>
+          <h3 style={{ borderBottom: "2px solid #ccc", paddingBottom: "5px" }}>
+            {category} Tasks
+          </h3>
+          <ul style={{ listStyleType: "none", padding: 0 }}>
+            {tasks.map((t, index) => (
+              <li
+                key={index}
+                style={{
+                  padding: "10px",
+                  borderBottom: "1px solid #ccc",
+                  display: "flex",
+                  flexDirection: "column",
+                  marginBottom: "10px",
+                  backgroundColor: darkMode ? "#444" : "#f9f9f9",
+                  borderRadius: "8px",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <input
+                    type="checkbox"
+                    checked={t.completed}
+                    onChange={() => handleToggleComplete(index)}
+                    style={{ marginRight: "10px" }}
+                  />
+                  <input
+                    type="text"
+                    value={t.text}
+                    onChange={(e) => handleEditTask(index, e.target.value)}
+                    style={{
+                      flex: 1,
+                      padding: "8px",
+                      border: "none",
+                      backgroundColor: "transparent",
+                      color: darkMode ? "#f4f4f9" : "#333",
+                      textDecoration: t.completed ? "line-through" : "none",
+                      textDecorationStyle: t.completed ? "dashed" : "none",
+                    }}
+                  />
+                </div>
+                <div style={{ fontSize: "14px", marginTop: "5px" }}>
+                  <span>Priority: {t.priority}</span> | Due:{" "}
+                  {t.dueDate || "None"}
+                </div>
+                <p style={{ fontSize: "12px", marginTop: "5px" }}>
+                  Note: {t.note}
+                </p>
+                <button
+                  onClick={() => handleDeleteTask(index)}
+                  style={{
+                    padding: "5px 10px",
+                    backgroundColor: "#dc3545",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "4px",
+                    cursor: "pointer",
+                    marginTop: "10px",
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 }
