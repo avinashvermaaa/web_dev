@@ -139,9 +139,9 @@ function Todo() {
         {darkMode ? "🌞" : "🌙"}
       </button>
 
-      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
         Todo List with Categories, Notes, and Dark Mode
-      </h2>
+      </h1>
 
       {/* Input fields for adding tasks */}
       <div
