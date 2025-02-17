@@ -94,29 +94,39 @@ function Todo() {
       </button>
 
       <div style={{ margin: "10px 0" }}>
+        <label>Task: </label>
         <input
           type="text"
           value={task}
           placeholder="Enter a new task"
           onChange={(e) => setTask(e.target.value)}
         />
+
+        <label style={{ marginLeft: "10px" }}>Priority: </label>
         <select value={priority} onChange={(e) => setPriority(e.target.value)}>
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
           <option value="High">High</option>
         </select>
+
+        <label style={{ marginLeft: "10px" }}>Due Date: </label>
         <input
           type="date"
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
         />
+
+        <label style={{ marginLeft: "10px" }}>Category: </label>
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="General">General</option>
           <option value="Work">Work</option>
           <option value="Personal">Personal</option>
           <option value="Urgent">Urgent</option>
         </select>
-        <button onClick={handleAddTask}>Add Task</button>
+
+        <button onClick={handleAddTask} style={{ marginLeft: "10px" }}>
+          Add Task
+        </button>
       </div>
 
       <textarea
