@@ -2,12 +2,14 @@
 
 # Online C++(Cpp) Compiler
 * https://codesphere-cpp-compiler.netlify.app/
+*  An Online `Coding platform` where you can `Write, Debug and Compile your Codes.`
+* AI Integrated Code generation using Chatgpt  Resolve issues & bugs using Integrated AI Features `(working on this feature)`
 
 # CodeSphere
 * Website :- https://avinashvermaaa.github.io/CodeSphere/
 * Website :- https://thcodesphere.netlify.app/
 *  An Online `AI Coding platform` where you can `Write, Debug and Compile your Codes.`
-   At the same time `Collaborate with other Colleagues` onto a live project and `Resolve issues & bugs using Integrated AI Features` ( still working on this feature).
+   At the same time `Collaborate with other Colleagues` in a live project and `Resolve issues & bugs using Integrated AI Features` ( still working on this feature).
 
 # File Transfer
 Website :- https://avinashvermaaa.github.io/File_Transfer/
