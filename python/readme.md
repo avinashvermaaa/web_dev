@@ -1,3 +1,4 @@
+* Use this website or vs code -->  https://regexr.com/
 
 * `\b` – Ensures the match starts at a word boundary.
 * `[A-Za-z0-9._%+-]+` – Matches the username part before @
