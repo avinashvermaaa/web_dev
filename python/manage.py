@@ -1,1 +1,3 @@
-python manage.py runserver
+# run server -> manage.py file
+
+# python manage.py runserver
