@@ -34,9 +34,8 @@ Website :- https://avinashvermaaa.github.io/Sorting_Visualizer/
 * A simple and user-friendly **Todo App** built with **ReactJS** for managing daily tasks efficiently.  
 
 # LittleLemon
-```
 github.com/avinashvermaaa/littlelemon
-```
+* Online Restaurant Table booking / Dinning app with SQL database.
 
 # CV_Website :- (not updated)
 Website :- https://avinashvermaaa.github.io/cv_website/
