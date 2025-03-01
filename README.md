@@ -31,8 +31,12 @@ Website :- https://avinashvermaaa.github.io/Sorting_Visualizer/
 
 # 📌 Todo App :-
   website :- https://todoapp-av.netlify.app/  
-A simple and user-friendly **Todo App** built with **ReactJS** for managing daily tasks efficiently.  
+* A simple and user-friendly **Todo App** built with **ReactJS** for managing daily tasks efficiently.  
 
+# LittleLemon
+```
+github.com/avinashvermaaa/littlelemon
+```
 
 # CV_Website :- (not updated)
 Website :- https://avinashvermaaa.github.io/cv_website/
